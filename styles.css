@@ -1,0 +1,336 @@
+body {
+  background-image: url('airport.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+}
+
+/* TITLE */
+/* I learned most of this stuff after looking at examples and spending a lot of time on w3schools :') */
+
+.title-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.title-text {
+  color: white;
+  font-size: 16vw;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
+  font-style: italic;
+  position: relative;
+  text-shadow: 0 0 10px white, 0 0 20px green, 0 0 30px white;
+  z-index: 2;
+}
+
+.title-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  animation: glitch 2s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, -2px);
+  color: greenyellow;
+  text-shadow: 0 0 5px white, 0 0 15px white;
+}
+
+.rain {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 0, 0.1) 0,
+    rgba(0, 255, 0, 0.2) 1vh,
+    transparent 4px
+  );
+  animation: rain;
+  animation-timeline: scroll(root); 
+  z-index: 0;
+}
+
+/* RAIN EFFECT */
+@keyframes rain {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(450%);
+  }
+}
+
+/* GLITCH EFFECT */
+@keyframes glitch {
+  0%, 100% {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(0);
+  }
+  33% {
+    clip-path: polygon(0 0, 100% 0, 100% 15%, 0 15%);
+    transform: translate(-5px, -5px);
+  }
+  66% {
+    clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+    transform: translate(5px, 5px);
+  }
+}
+
+/* P AND HEADERS */
+p {
+  font-family: 'Lucida Sans', sans-serif;
+}
+
+h2 {
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  font-family: 'Lucida Sans', sans-serif;
+  font-size: 7vw;
+  line-height: 1;
+  margin: 0;
+}
+
+h3 {
+  font-size: 2.5vw;
+}
+
+/* NAVBAR */
+.navbar {
+    padding: 0 0 0;
+    align-items: right;
+}
+
+.nav-item {
+    padding: 0 18px;
+}
+
+.nav-link {
+    font-family: 'Lucida Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: greenyellow !important;
+    text-shadow: 0.05vw 0.09vw #212529;
+
+}
+
+.nav-link:hover {
+  color:teal !important;
+  font-style: italic;
+}
+
+.navbar-toggler-icon {
+  background-color: greenyellow;
+}
+
+/* ABOUT */
+#about {
+    padding: 10% 10%;
+    background-color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.photoflip {
+  animation: flip;
+  animation-timeline: scroll(root);
+}
+
+@keyframes flip {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-box {
+    padding-top: 12%;
+    text-align: left center;
+    font-family: 'Lucida Sans', sans-serif;
+}
+
+/* RESUME */
+.resume-text {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: 'Lucida Sans', sans-serif;
+  color: white;
+}
+
+.resume-container {
+  padding: 5% 5%;
+  width: 100%; /* Or any specific width */
+  margin: 0 auto; /* Centers the element horizontally */
+  text-align: center;
+}
+
+.resume-container embed {
+  display: block; /* Ensure embed is a block element */
+  margin: 0 auto; /* Center the embed within its container */
+}
+
+/* WORK */
+#work {
+    padding: 10% 0%;
+    margin: 0;
+    text-align: center;
+    background: white;
+}
+
+.workimage {
+  border: 0.5vw solid #212529;
+  background: url('recipe.png');
+  background-size: cover;
+  display: block;
+  position: relative;
+}
+
+.workimage a {
+  display: none;
+  position: absolute; 
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  color: white; /* Text color */
+  font-family: 'Lucida Sans', sans-serif;
+  font-style: italic;
+  text-align: center;
+  background:#212529; 
+  padding: 5px;
+}
+
+.workimage:hover a {
+  display: block;
+}
+
+.workimage2 {
+  border: 0.5vw solid #212529;
+  background: url('studybuddy.png');
+  background-size: cover;
+  display: block;
+  position: relative; 
+}
+
+.workimage2 a {
+  display: none;
+  position: absolute; 
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: 'Lucida Sans', sans-serif;
+  font-style: italic;
+  text-align: center;
+  background: #212529;
+  padding: 5px;
+}
+
+.workimage2:hover a {
+  display: block;
+}
+
+.workimage3 {
+  border: 0.5vw solid #212529;
+  background: url('dicegame.png');
+  background-size: cover;
+  background-position: center center;
+  display: block;
+  position: relative;
+}
+
+.workimage3 a {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  color: white; 
+  font-family: 'Lucida Sans', sans-serif;
+  font-style: italic;
+  text-align: center;
+  background: #212529; 
+  padding: 5px;
+}
+
+.workimage3:hover a {
+  display: block;
+}
+
+/* CONTACT */
+.contact {
+  padding-top: 10%;
+  width: 100%;
+  overflow: hidden; 
+  position: relative;
+}
+
+.contact-text {
+  text-transform: uppercase;
+  font-size: 15vw;
+  font-family: 'Lucida Sans', sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+  display: inline-block;
+  white-space: nowrap;
+  animation: horizontal 30s infinite linear;
+  padding-left: 0%;
+  color: white;
+}
+
+.contact-text:hover {
+  color: greenyellow;
+}
+
+@keyframes horizontal {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* SOCIALS */
+.socials {
+  text-align: center;
+}
+
+.social-icon {
+  margin: 2vw 1vw;
+  font-size: 6vw;
+  color: greenyellow;
+  text-shadow: 0.2vw 0.5vw #212529;
+}
+
+.social-icon:hover {
+  color: white;
+  font-size: 7vw;
+}
+
+/* FOOTER  */
+#footer {
+    padding: 5% 5%;
+    text-align: center;
+    color: white;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 1028px){
+    #title {
+        text-align: center;
+    }
+    .title-image{
+        position: static;
+        transform: rotate(0);
+    }
+}
+
